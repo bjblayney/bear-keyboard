@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<title>mock keyboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Heebo:400,900">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script type="text/javascript">
+        function preload(arrayOfImages) {
+            for (i = 0; i < arrayOfImages.length; i++) {
+                var img = new Image();
+                img.src = arrayOfImages[i];
+            }
+        }
+
+        preload([
+            'Bears/A.gif',
+            'Bears/B.gif',
+            'Bears/C.gif',
+            'Bears/D.gif',
+            'Bears/E.gif',
+            'Bears/F.gif',
+            'Bears/G.gif',
+            'Bears/H.gif',
+            'Bears/I.gif',
+            'Bears/J.gif',
+            'Bears/K.gif',
+            'Bears/L.gif',
+            'Bears/M.gif',
+            'Bears/N.gif',
+            'Bears/O.gif',
+            'Bears/P.gif',
+            'Bears/Q.gif',
+            'Bears/R.gif',
+            'Bears/S.gif',
+            'Bears/T.gif',
+            'Bears/U.gif',
+            'Bears/V.gif',
+            'Bears/W.gif',
+            'Bears/X.gif',
+            'Bears/Y.gif',
+            'Bears/Z.gif',
+        ]);
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="row stage">
+        </div>
+
+        <div class="row top">
+            <div data-key="81" class="panel key">
+                <kbd>Q</kbd>
+            </div>
+            <div data-key="87" class="panel key">
+                <kbd>W</kbd>
+            </div>
+            <div data-key="69" class="panel key">
+                <kbd>E</kbd>
+            </div>
+            <div data-key="82" class="panel key">
+                <kbd>R</kbd>
+            </div>
+            <div data-key="84" class="panel key">
+                <kbd>T</kbd>
+            </div>
+            <div data-key="89" class="panel key">
+                <kbd>Y</kbd>
+            </div>
+            <div data-key="85" class="panel key">
+                <kbd>U</kbd>
+            </div>
+            <div data-key="73" class="panel key">
+                <kbd>I</kbd>
+            </div>
+            <div data-key="79" class="panel key">
+                <kbd>O</kbd>
+            </div>
+            <div data-key="80" class="panel key">
+                <kbd>P</kbd>
+            </div>
+        </div>
+        
+        <div class="row middle">
+            <div data-key="65" class="panel key">
+                <kbd>A</kbd>
+            </div>
+            <div data-key="83" class="panel key">
+                <kbd>S</kbd>
+            </div>
+            <div data-key="68" class="panel key">
+                <kbd>D</kbd>
+            </div>
+            <div data-key="70" class="panel key">
+                <kbd>F</kbd>
+            </div>
+            <div data-key="71" class="panel key">
+                <kbd>G</kbd>
+            </div>
+            <div data-key="72" class="panel key">
+                <kbd>H</kbd>
+            </div>
+            <div data-key="74" class="panel key">
+                <kbd>J</kbd>
+            </div>
+            <div data-key="75" class="panel key">
+                <kbd>K</kbd>
+            </div>
+            <div data-key="76" class="panel key">
+                <kbd>L</kbd>
+            </div>
+        </div>
+        
+        <div class="row bottom">
+            <div data-key="90" class="panel key">
+                <kbd>Z</kbd>
+            </div>
+            <div data-key="88" class="panel key">
+                <kbd>X</kbd>
+            </div>
+            <div data-key="67" class="panel key">
+                <kbd>C</kbd>
+            </div>
+            <div data-key="86" class="panel key">
+                <kbd>V</kbd>
+            </div>
+            <div data-key="66" class="panel key">
+                <kbd>B</kbd>
+            </div>
+            <div data-key="78" class="panel key">
+                <kbd>N</kbd>
+            </div>
+            <div data-key="77" class="panel key">
+                <kbd>M</kbd>
+            </div>
+        </div>
+        
+        
+        <footer class="footer"></footer>
+    </div>
+
+    <script>
+        function addStyle(e){
+            const key = document.querySelector('.key[data-key="'+e.keyCode+'"]');
+            const stage = document.querySelector('.stage');
+            
+            if( e.keyCode == 8 ) {
+                stage.removeChild(stage.lastChild);
+            } else {
+                key.classList.add('active');
+            
+                let letter = key.children[0].innerHTML;
+
+                var img = document.createElement("img");
+                img.src = "Bears/"+ letter +".gif";
+                stage.appendChild(img);
+            }
+        }
+        function clickStyle(e){
+            const thenumber = this.getAttribute('data-key');
+            const key = document.querySelector('.key[data-key="'+thenumber+'"]');
+            const stage = document.querySelector('.stage');
+            
+           
+            let letter = key.children[0].innerHTML;
+
+            var img = document.createElement("img");
+            img.src = "Bears/"+ letter +".gif";
+            stage.appendChild(img);
+        }
+        function removeTransition(e){
+            if (e.propertyName !== 'transform') return;
+            this.classList.remove('active');
+        }
+
+        const keys = document.querySelectorAll('.key');
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        [...keys].map(key => key.addEventListener("click", this.clickStyle));
+        window.addEventListener('keydown', addStyle);
+    </script>
+</body>
+</html>
