@@ -173,12 +173,15 @@
             const key = document.querySelector('.key[data-key="'+thenumber+'"]');
             const stage = document.querySelector('.stage');
             
-           
-            let letter = key.children[0].innerHTML;
+            if( thenumber == 8 ) {
+                stage.removeChild(stage.lastChild);
+            } else {
+                let letter = key.children[0].innerHTML;
 
-            var img = document.createElement("img");
-            img.src = "Bears/"+ letter +".gif";
-            stage.appendChild(img);
+                var img = document.createElement("img");
+                img.src = "Bears/"+ letter +".gif";
+                stage.appendChild(img);
+            }
         }
         function removeTransition(e){
             if (e.propertyName !== 'transform') return;
