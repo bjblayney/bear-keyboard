@@ -42,20 +42,24 @@ header p {font-size: .7rem;}
 }
 
 .stage {
+    justify-items: center;
     justify-content: center;
     align-content: center;
     grid-template-columns: repeat(15, 3em);
 }
 .top {
     grid-template-columns: repeat(10, 3em);
+    justify-items: center;
     justify-content: center;
 }
 .middle {
     grid-template-columns: repeat(9, 3em);
+    justify-items: center;
     justify-content: center;
 }
 .bottom {
     grid-template-columns: repeat(7, 3em);
+    justify-items: center;
     justify-content: center;
 }
 
@@ -117,6 +121,15 @@ kbd {
 }
 .footer {
     font-size: .7rem;
+    grid-template-columns: repeat(2, auto);
+    justify-items: center;
+    justify-content: center; 
+    grid-gap: 10px;
+}
+.footer .key {
+    height: 3em;
+    width: auto;
+    padding: 0px 10px;
 }
 
 /* @media only screen and (max-width: 600px) { */
